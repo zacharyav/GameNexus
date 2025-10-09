@@ -1,6 +1,17 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import path from "path";
+import express from "express";
+
+// Serve static frontend files
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, "../client/dist")));
+
+// Fallback to index.html for SPA routes
+app.get("*", (_req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+});
 
 const app = express();
 app.use(express.json());
