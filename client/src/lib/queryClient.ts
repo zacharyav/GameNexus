@@ -55,3 +55,26 @@ export const queryClient = new QueryClient({
     },
   },
 });
+import { QueryClient } from "@tanstack/react-query";
+
+export const queryClient = new QueryClient();
+
+export async function apiRequest<T>(
+  endpoint: string,
+  options?: RequestInit
+): Promise<T> {
+  const baseUrl =
+    import.meta.env.VITE_API_URL || "https://gamenexus-oigv.onrender.com/api";
+  const response = await fetch(`${baseUrl}${endpoint}`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    ...options,
+  });
+
+  if (!response.ok) {
+    throw new Error(`API request failed: ${response.statusText}`);
+  }
+
+  return response.json() as Promise<T>;
+}

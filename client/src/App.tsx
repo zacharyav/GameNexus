@@ -154,8 +154,12 @@ function GameApp() {
         />
       )}
 
+<<<<<<< HEAD
       <Toaster />
     </>
+=======
+     </>
+>>>>>>> cf185d37 (Updated client build, fixed UI and Tailwind config)
   );
 }
 
@@ -163,9 +167,13 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
+<<<<<<< HEAD
         <TooltipProvider>
           <GameApp />
         </TooltipProvider>
+=======
+          <GameApp />
+>>>>>>> cf185d37 (Updated client build, fixed UI and Tailwind config)
       </ThemeProvider>
     </QueryClientProvider>
   );
